@@ -32,9 +32,9 @@ for(let numeroFila = 1; numeroFila <= 3; numeroFila++){
         alert(`Numero de fila ${numeroFila} nombre: ${nombre}`);
     }
 
-}
+} */
 
- */
+
 let contenido = document.getElementById("contenido");
 
 //array de objetos
@@ -75,15 +75,31 @@ libros.forEach((item) => {
         <p class="id">ID: ${item.id}</p>
         <p class="genero">Genero: ${item.genero}</p>
         <b class="precio">Precio: $${item.precio}</b>
+        /* <button id="botonElegir${item.id}">Seleccionar</button> */
     `;
 
     contenido.append(div);
+
+    /* let botonElegir = document.getElementById(`botonElegir${item.id}`)
+    botonElegir.addEventListener("click", () => {
+        console.log(`Elegido ${item.nombre}`);
+        toastify({
+            text: `Agregaste ${item.nombre} al carrito`,
+            duration: 3000,
+            gravity: "bottom",
+            position: "right",
+            style: {
+                background: "linear-gradient(to right, blue, yellow)",
+            }, 
+            onClick: function(){}
+        }).showToast();
+    }) */
 
     let comprar = document.createElement("button");
     comprar.innerText = "comprar";
     comprar.className = "comprar"
 
-    div.append(comprar);
+    div.append(comprar); 
 
     //agregar al carrito
     comprar.addEventListener("click", () => {
@@ -110,8 +126,10 @@ if (carritoStorage) {
     document.body.append(div);
 }
 
+
 eliminar.addEventListener("click", () => {
     localStorage.clear();
     location.reload();
-    alert("carrito eliminado");
-});
+    alert("carrito eliminado")
+}); 
+
