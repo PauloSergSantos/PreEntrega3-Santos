@@ -1,4 +1,4 @@
-/* function saludo(saludo, querido, usuario){
+function saludo(saludo, querido, usuario){
     let mensaje = `${saludo} ${querido} ${usuario}`;
     alert(mensaje);
 }
@@ -41,7 +41,7 @@ for(let numeroFila = 1; numeroFila <= 3; numeroFila++){
         alert(`Numero de fila ${numeroFila} nombre: ${nombre}`);
     }
 
-}  */
+}
 
 
 let contenido = document.getElementById("contenido");
@@ -51,7 +51,7 @@ let contenido = document.getElementById("contenido");
 //guardamos en el localStorage
 localStorage.setItem("carrito", JSON.stringify(libros));
 
-/* const precio = parseInt(prompt("Ingrese el monto minimo que quiere gastar"));
+const precio = parseInt(prompt("Ingrese el monto minimo que quiere gastar"));
 const precioLibro = libros.filter(item => item.precio <= precio);
 alert(precioLibro);
 
@@ -62,9 +62,7 @@ if(buscarLibro){
     alert(comunicado);    
 }else{
     alert("Libro no encontrado");
-}; */
-
-
+};
 
 
 //carrito de compras
