@@ -7,6 +7,15 @@ saludo("Hola", "querido", "usuario");
 saludo("Bienvenido", "a mi tienda", "de libros");
 
 
+//sintaxis avanzada
+let confirmacion = prompt("¿Es tu primera vez comprando en nuestra página?");
+confirmacion === "si" ? alert("Esperamos que nos vuelvas a elegir") : alert("Gracias por volver a confiar en nosotros")
+
+
+setTimeout(() => {
+    alert("Buena suerte!");
+}, 1000);
+
 
 let edad = prompt("Ingrese su edad");
 
@@ -18,7 +27,7 @@ if(edad <= 0){
     alert("Fuiste asignado a la sección adolescentes");
 }else{
     alert("Podes ingresar a cualquier sección");
-} 
+}
 
 
 //asignación de turno
@@ -32,19 +41,12 @@ for(let numeroFila = 1; numeroFila <= 3; numeroFila++){
         alert(`Numero de fila ${numeroFila} nombre: ${nombre}`);
     }
 
-} */
+}  */
 
 
 let contenido = document.getElementById("contenido");
 
-//array de objetos
-const libros = [
-    {id: 1, nombre: "brillaras", genero: "trama", precio: 4400, img: "https://i2.wp.com/caromarando.com/wp-content/uploads/2019/11/Brillaras-seras-viviras_2.jpg?fit=828%2C909&ssl=1"},
-    {id: 2, nombre: "a dos metros de ti", genero: "ficcion", precio: 4200, img: "https://sbslibreria.vteximg.com.br/arquivos/ids/296730-1000-1000/9789871997381.jpg"},
-    {id: 3, nombre: "el cuaderno de Noah", genero: "romance", precio: 5000, img: "https://images.cdn2.buscalibre.com/fit-in/360x360/0a/a5/0aa5b59d6b48e7d5925882f90dab6823.jpg"},
-    {id: 4, nombre: "todo lo que nunca fuimos", genero: "novela", precio: 6000, img: "https://planetadelibrospe5.cdnstatics.com/usuaris/libros/fotos/341/m_prensa/todo-lo-que-nunca-fuimos_9786125027122_3d_202108102145.png"},
-    {id: 5, nombre: "el visitante", genero: "terror", precio: 5600, img: "https://www.libreriasinopsis.com/imagenes/9788401/978840102119.JPG"},
-];
+
 
 //guardamos en el localStorage
 localStorage.setItem("carrito", JSON.stringify(libros));
@@ -62,6 +64,9 @@ if(buscarLibro){
     alert("Libro no encontrado");
 }; */
 
+
+
+
 //carrito de compras
 let carrito = [];
 
@@ -75,26 +80,12 @@ libros.forEach((item) => {
         <p class="id">ID: ${item.id}</p>
         <p class="genero">Genero: ${item.genero}</p>
         <b class="precio">Precio: $${item.precio}</b>
-        /* <button id="botonElegir${item.id}">Seleccionar</button> */
     `;
 
     contenido.append(div);
 
-    /* let botonElegir = document.getElementById(`botonElegir${item.id}`)
-    botonElegir.addEventListener("click", () => {
-        console.log(`Elegido ${item.nombre}`);
-        toastify({
-            text: `Agregaste ${item.nombre} al carrito`,
-            duration: 3000,
-            gravity: "bottom",
-            position: "right",
-            style: {
-                background: "linear-gradient(to right, blue, yellow)",
-            }, 
-            onClick: function(){}
-        }).showToast();
-    }) */
 
+    //botón para comprar
     let comprar = document.createElement("button");
     comprar.innerText = "comprar";
     comprar.className = "comprar"
@@ -111,8 +102,12 @@ libros.forEach((item) => {
             precio: item.precio,
         });
         console.log(carrito);
+        alert("producto agregado")
     });
 });
+
+
+
 
 //eliminar todo el carrito
 let eliminar = document.getElementById("eliminar_carrito");
@@ -122,7 +117,6 @@ if (carritoStorage) {
     carrito = JSON.parse(carritoStorage);
 }else{
     let div = document.createElement("div");
-    div.innerHTML = "Carrito vacio";
     document.body.append(div);
 }
 
@@ -130,6 +124,26 @@ if (carritoStorage) {
 eliminar.addEventListener("click", () => {
     localStorage.clear();
     location.reload();
-    alert("carrito eliminado")
-}); 
+    alert("carrito eliminado");
+});  
+
+
+const boton = document.getElementById("boton");
+const titulo = document.getElementById("titulo");
+
+boton.addEventListener("click", () => {
+    titulo.classList.add("color");
+    setTimeout(() => {
+        titulo.classList.remove("color");
+    }, 2000);
+    Toastify({
+        text: "cambiaste el color",
+        duration: 3000,
+        style: {
+            background: "linear-gradient(to right, red, blue)"
+        }
+    }).showToast();
+
+})
+
 
